@@ -1,0 +1,7 @@
+{
+  "username": "whatsplaying",
+  "password": "whatsplaying",
+  "host": "studio.local",
+  "mqtt_port": 1884,
+  "web_port": 777
+}

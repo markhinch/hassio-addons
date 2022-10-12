@@ -1,0 +1,26 @@
+name: "What's Playing?"
+description: "Show what's playing..."
+version: "1.1.8"
+slug: "whats_playing"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+startup: application
+ports:
+  777/tcp: 777
+options:
+  username: "whatsplaying"
+  password: "whatsplaying"
+  host: "homeassistant.local"
+  mqtt_port: 1884
+  web_port: 777
+schema:
+  username: str
+  password: str
+  host: str
+  mqtt_port: int
+  web_port: int

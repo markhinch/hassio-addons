@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>What's playing?</title>
+
+    <script>
+        let CONFIG_USERNAME = "whatsplaying";
+        let CONFIG_PASSWORD = "whatsplaying";
+        let CONFIG_HOST = 'studio.local';
+        let CONFIG_MQTT_PORT = 1884;
+    </script>
+
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/mqttws31.js"></script>
+    <script type="text/javascript" src="js/whatsplaying.js"></script>
+
+    <script>
+        fetch("data/options.json")
+            .then(response => response.json())
+            .then(json => MQTTconnect(json));
+    </script>
+
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+        <div id="artwork">
+
+            <div class="action" id="action">Test</div>
+
+            <div class="icon" id="icon_playing">&#x23F5;</div>
+            <div class="icon" id="icon_paused_playback">&#x23F8;</div>
+            <div class="icon" id="icon_transitioning">&nbsp;</div>
+            <div class="icon" id="icon_failed">&#x0021;</div>
+            <div class="icon" id="icon_connected">&#x00A9;</div>
+            <div class="icon" id="icon_lost">&#x003F;</div>
+
+        </div>
+</body>
+</html>
