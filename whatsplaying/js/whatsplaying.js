@@ -60,7 +60,7 @@ function onMessageArrived(message) {
     let subtopic = topic.split('/')[1];
     if(subtopic == 'artwork') {
         let payload = JSON.parse(message.payloadString);
-        $('#artwork').css('background-image', "url('" + payload.artwork + "')");
+        $('#artwork').css('background-image', "url('" + payload.artUri + "')");
     } else if(subtopic == 'action') {
 	console.log("0");
         let payload = message.payloadString;
