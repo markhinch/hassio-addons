@@ -8,7 +8,7 @@ function MQTTconnect(config) {
     }
 
 	// Create MQTT client
-	client = new Paho.MQTT.Client(config.mqtt_host, config.mqtt_port, path, "whatsplaying");
+	client = new Paho.MQTT.Client(config.mqtt_host, config.mqtt_port, path, "whatsplaying_" + (Math.random() * 1000));
 
         // useSSL: useTLS,
         // cleanSession: cleansession,
