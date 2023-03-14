@@ -1,6 +1,6 @@
 name: "What's Playing?"
 description: "Show what's playing..."
-version: "1.1.9"
+version: "0.0.1"
 slug: "whats_playing"
 init: false
 arch:
@@ -13,14 +13,14 @@ startup: application
 ports:
   777/tcp: 777
 options:
-  username: "whatsplaying"
-  password: "whatsplaying"
-  host: "homeassistant.local"
+  mqtt_username: ""
+  mqtt_password: ""
+  mqtt_host: "homeassistant.local"
   mqtt_port: 1884
   web_port: 777
 schema:
-  username: str
-  password: str
-  host: str
+  mqtt_username: str
+  mqtt_password: str
+  mqtt_host: str
   mqtt_port: int
   web_port: int

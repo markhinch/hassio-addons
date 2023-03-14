@@ -11,11 +11,10 @@ RUN \
 WORKDIR /data
 
 # Copy data for add-on
-COPY run.sh index.html /
+COPY run.sh index.html whatsplaying.css whatsplaying.js /
 COPY js /js
 COPY css /css
 
 RUN chmod a+x /run.sh
 
 CMD [ "/run.sh" ]
-

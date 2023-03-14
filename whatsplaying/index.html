@@ -4,32 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>What's playing?</title>
+	<title>What's Playing?</title>
 
-    <script src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/mqttws31.js"></script>
-    <script type="text/javascript" src="js/whatsplaying.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
 
-    <script>
-        fetch("data/options.json")
-            .then(response => response.json())
-            .then(json => MQTTconnect(json));
-    </script>
-
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="whatsplaying.css" />
 </head>
+
 <body>
-        <div id="artwork">
+	<img id="artwork" src="" />
 
-            <div class="action" id="action">Test</div>
-
-            <div class="icon" id="icon_playing">&#x23F5;</div>
-            <div class="icon" id="icon_paused_playback">&#x23F8;</div>
-            <div class="icon" id="icon_transitioning">&nbsp;</div>
-            <div class="icon" id="icon_failed">&#x0021;</div>
-            <div class="icon" id="icon_connected">&#x00A9;</div>
-            <div class="icon" id="icon_lost">&#x003F;</div>
-
-        </div>
+	<script src="main.js" type="module"></script>
 </body>
 </html>
