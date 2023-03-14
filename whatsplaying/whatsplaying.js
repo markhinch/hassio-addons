@@ -2,7 +2,7 @@ let path;
 let client;
 
 function MQTTconnect(config) {
-	console.log(config.mqtt_host);
+	//console.log(config.mqtt_host);
     if (typeof path == "undefined") {
         path = '/';
     }
@@ -34,7 +34,7 @@ function onFailure() {
 
 // Callback function for successful connection
 function onConnect() {
-	console.log("Connected to MQTT server");
+	//console.log("Connected to MQTT server");
 
 	// Ask for current state
 	var message = new Paho.MQTT.Message("");
@@ -48,13 +48,13 @@ function onConnect() {
 // Callback function for lost connection
 function onConnectionLost(responseObject) {
 	if (responseObject.errorCode !== 0) {
-		console.log("Connection lost: " + responseObject.errorMessage);
+		//console.log("Connection lost: " + responseObject.errorMessage);
 	}
 }
 
 // Callback function for received message
 function onMessageArrived(message) {
-	console.log("Message received: " + message.payloadString);
+	//console.log("Message received: " + message.payloadString);
 
 	// Parse message payload as JSON object
 	var data = JSON.parse(message.payloadString);
@@ -63,7 +63,7 @@ function onMessageArrived(message) {
 	var imageUrl = data.artUri;
 
 	// Update image element with new source
-	document.getElementById("artwork").src = imageUrl;
+	document.getElementById("artwork").style.backgroundImage = 'url("' + imageUrl + '")';
 }
 
 fetch("data/options.json")
