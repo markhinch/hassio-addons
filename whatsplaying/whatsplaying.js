@@ -29,7 +29,7 @@ function MQTTconnect(config) {
 
 // Callback function for failed connection
 function onFailure() {
-	setTimeout(MQTTconnect, reconnectTimeout);
+	setTimeout(MQTTconnect, 3000);
 }
 
 // Callback function for successful connection

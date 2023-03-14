@@ -1,6 +1,6 @@
 name: "What's Playing?"
 description: "Show what's playing..."
-version: "0.0.2"
+version: "0.0.3"
 slug: "whats_playing"
 init: false
 arch:
