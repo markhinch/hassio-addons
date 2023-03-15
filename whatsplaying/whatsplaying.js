@@ -69,3 +69,18 @@ function onMessageArrived(message) {
 fetch("data/options.json")
     .then(response => response.json())
     .then(json => MQTTconnect(json));
+
+// Click after 5 seconds (to remove Midori interface)
+setTimeout(() => {
+    const x = window.innerWidth / 2;
+    const y = window.innerHeight / 2;
+    const element = document.elementFromPoint(x, y);
+
+    if (element) {
+        element.dispatchEvent(new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window
+        }));
+    }
+}, 5000);
