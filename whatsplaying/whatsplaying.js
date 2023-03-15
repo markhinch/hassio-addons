@@ -66,9 +66,6 @@ function onMessageArrived(message) {
 	document.getElementById("artwork").style.backgroundImage = 'url("' + imageUrl + '")';
 }
 
-setTimeout(() => {
-
-	fetch("data/options.json")
-	    .then(response => response.json())
-	    .then(json => MQTTconnect(json));
-}, 5000);
+fetch("data/options.json")
+    .then(response => response.json())
+    .then(json => MQTTconnect(json));
