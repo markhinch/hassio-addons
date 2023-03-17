@@ -29,7 +29,7 @@ function MQTTconnect(config) {
 
 // Callback function for failed connection
 function onFailure() {
-	setTimeout(MQTTconnect, 3000);
+	setTimeout(initialLoad, 3000);
 }
 
 // Callback function for successful connection
@@ -66,6 +66,8 @@ function onMessageArrived(message) {
 	document.getElementById("artwork").style.backgroundImage = 'url("' + imageUrl + '")';
 }
 
-fetch("data/options.json")
-    .then(response => response.json())
-    .then(json => MQTTconnect(json));
+(function initialLoad() {
+	fetch("data/options.json")
+	    .then(response => response.json())
+	    .then(json => MQTTconnect(json));
+})();
