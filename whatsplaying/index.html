@@ -12,7 +12,15 @@
 </head>
 
 <body>
-	<div id="artwork">&nbsp;</div>
+    <div id="imageContainer">
+        <img id="currentImage" src="">
+        <div id="textContainer">
+            <marquee id="scrollingContainer" behavior="scroll" direction="left" scrollamount="3">
+                <span id="bandName"></span>
+                <span id="songTitle"></span>
+            </marquee>
+        </div>
+    </div>
 
 	<script src="whatsplaying.js" type="module"></script>
 </body>

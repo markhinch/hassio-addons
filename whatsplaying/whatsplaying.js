@@ -62,8 +62,9 @@ function onMessageArrived(message) {
 	// Extract image URL from "image" field
 	var imageUrl = data.artUri;
 
-	// Update image element with new source
-	document.getElementById("artwork").style.backgroundImage = 'url("' + imageUrl + '")';
+	showImage(imageUrl, data.artist, data.title);
+
+//	document.getElementById("artwork").style.backgroundImage = 'url("' + imageUrl + '")';
 }
 
 (function initialLoad() {
@@ -71,3 +72,27 @@ function onMessageArrived(message) {
 	    .then(response => response.json())
 	    .then(json => MQTTconnect(json));
 })();
+
+function showImage(imageUrl, bandName, songTitle) {
+    const currentImage = document.getElementById("currentImage");
+
+    // Update band name and song title
+    document.getElementById("bandName").textContent = bandName;
+    document.getElementById("songTitle").textContent = songTitle;
+
+    // Preload the new image
+    const newImage = new Image();
+    newImage.src = imageUrl;
+
+    // When the new image is loaded, start the transition
+    newImage.onload = () => {
+        // Fade out the current image
+        currentImage.style.opacity = 0;
+
+        // After the fade-out transition is complete, swap the images and fade in
+        setTimeout(() => {
+            currentImage.src = newImage.src;
+            currentImage.style.opacity = 1;
+        }, 1000);
+    };
+}
