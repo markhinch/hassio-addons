@@ -15,6 +15,7 @@ body, html {
     justify-content: center;
     align-items: center;
     background-color: black;
+    transform: rotate(-90deg);
 }
 
 #currentImage {
@@ -37,13 +38,29 @@ body, html {
     padding: 10px 0;
     background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
+    font-size: 1.5em;
+    color: white;
+    opacity: 0;
+    animation: fadeInOut 30s linear infinite;
     font-family: "Trebuchet MS";
-    font-size: 5vw;
-    color: rgba(255, 255, 255, 0.5);
-    overflow: hidden;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
 
 #bandName {
   font-weight: bold;
-  margin-right: 2vw;
+  margin-bottom: 10px;
 }
