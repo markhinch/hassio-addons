@@ -67,11 +67,11 @@ function onMessageArrived(message) {
 //	document.getElementById("artwork").style.backgroundImage = 'url("' + imageUrl + '")';
 }
 
-(function initialLoad() {
+function initialLoad() {
 	fetch("data/options.json")
 	    .then(response => response.json())
 	    .then(json => MQTTconnect(json));
-})();
+}
 
 function showImage(imageUrl, bandName, songTitle) {
     const currentImage = document.getElementById("currentImage");
@@ -96,3 +96,7 @@ function showImage(imageUrl, bandName, songTitle) {
         }, 1000);
     };
 }
+
+window.onload = (event) => {
+    initialLoad();
+};
