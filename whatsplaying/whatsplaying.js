@@ -108,11 +108,11 @@ function generateQRCode(url) {
 
     const qrCode = new QRCode(qrcodeDiv, {
         text: url,
-        width: 256,
-        height: 256,
+        width: 162.5,
+        height: 162.5,
         colorDark: "#000000",
         colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
+        correctLevel: QRCode.CorrectLevel.L
     });
 }
 
