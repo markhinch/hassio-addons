@@ -94,7 +94,7 @@ function showImage(imageUrl, bandName, songTitle) {
         setTimeout(() => {
             currentImage.src = newImage.src;
             currentImage.style.opacity = 1;
-        }, 1000);
+        }, 2000);
     };
 }
 
