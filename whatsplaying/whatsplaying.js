@@ -63,6 +63,7 @@ function onMessageArrived(message) {
 	var imageUrl = data.artUri;
 
 	showImage(imageUrl, data.artist, data.title);
+    generateQRCode(data.searchTerm);
 
 //	document.getElementById("artwork").style.backgroundImage = 'url("' + imageUrl + '")';
 }
@@ -77,8 +78,8 @@ function showImage(imageUrl, bandName, songTitle) {
     const currentImage = document.getElementById("currentImage");
 
     // Update band name and song title
-    document.getElementById("bandName").textContent = bandName;
-    document.getElementById("songTitle").textContent = songTitle;
+//    document.getElementById("bandName").textContent = bandName;
+//    document.getElementById("songTitle").textContent = songTitle;
 
     // Preload the new image
     const newImage = new Image();
@@ -95,6 +96,24 @@ function showImage(imageUrl, bandName, songTitle) {
             currentImage.style.opacity = 1;
         }, 1000);
     };
+}
+
+function generateQRCode(url) {
+    const qrcodeDiv = document.getElementById('qrcode');
+
+    // Clear the div before adding the new QR code
+    while (qrcodeDiv.firstChild) {
+        qrcodeDiv.removeChild(qrcodeDiv.firstChild);
+    }
+
+    const qrCode = new QRCode(qrcodeDiv, {
+        text: url,
+        width: 256,
+        height: 256,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
 }
 
 window.onload = (event) => {
