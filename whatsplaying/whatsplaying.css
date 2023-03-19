@@ -66,9 +66,11 @@ body, html {
 }
 
 #qrcode {
+    background: #FFF;
     position: absolute;
     bottom: 10px;
     right: 10px;
+    padding: 10px;
     opacity: 0;
     animation: fadeInOut 60s linear infinite;
 }
