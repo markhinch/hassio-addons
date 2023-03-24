@@ -65,12 +65,15 @@ body, html {
   margin-bottom: 10px;
 }
 
-#qrcode {
+#qrCode {
     background: #FFF;
     position: absolute;
     bottom: 10px;
     right: 10px;
     padding: 10px;
     opacity: 0;
+}
+
+#qrCode.show {
     animation: fadeInOut 60s linear infinite;
 }

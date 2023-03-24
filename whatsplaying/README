@@ -15,7 +15,8 @@ Please note you'll need a local `data/options.json` file (which is usually gener
 	"mqtt_username": "",
 	"mqtt_password": "",
 	"mqtt_host": "homeassistant.local",
-	"mqtt_port": 1884
+	"mqtt_port": 1884,
+	"show_qr": false
 }
 ```
 ---

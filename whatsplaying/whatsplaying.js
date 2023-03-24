@@ -1,5 +1,6 @@
 let path;
 let client;
+let show_qr;
 
 function MQTTconnect(config) {
 	//console.log(config.mqtt_host);
@@ -9,6 +10,7 @@ function MQTTconnect(config) {
 
 	// Create MQTT client
 	client = new Paho.MQTT.Client(config.mqtt_host, config.mqtt_port, path, "whatsplaying_" + (Math.random() * 1000));
+    show_qr = config.show_qr;
 
         // useSSL: useTLS,
         // cleanSession: cleansession,
@@ -63,7 +65,7 @@ function onMessageArrived(message) {
 	var imageUrl = data.artUri;
 
 	showImage(imageUrl, data.artist, data.title);
-    generateQRCode(data.searchTerm);
+    show_qr ? showQRCode(data.searchTerm) : hideQRCode();
 
 //	document.getElementById("artwork").style.backgroundImage = 'url("' + imageUrl + '")';
 }
@@ -75,7 +77,7 @@ function initialLoad() {
 }
 
 function showImage(imageUrl, bandName, songTitle) {
-    const currentImage = document.getElementById("currentImage");
+    var currentImage = document.getElementById("currentImage");
 
     // Update band name and song title
 //    document.getElementById("bandName").textContent = bandName;
@@ -98,15 +100,17 @@ function showImage(imageUrl, bandName, songTitle) {
     };
 }
 
-function generateQRCode(url) {
-    const qrcodeDiv = document.getElementById('qrcode');
+function showQRCode(url) {
+    var qrCode = document.getElementById('qrCode');
+
+    qrCode.classList.add('show');
 
     // Clear the div before adding the new QR code
-    while (qrcodeDiv.firstChild) {
-        qrcodeDiv.removeChild(qrcodeDiv.firstChild);
+    while (qrCode.firstChild) {
+        qrCode.removeChild(qrCode.firstChild);
     }
 
-    const qrCode = new QRCode(qrcodeDiv, {
+    const qr = new QRCode(qrCode, {
         text: url,
         width: 162.5,
         height: 162.5,
@@ -114,6 +118,17 @@ function generateQRCode(url) {
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.L
     });
+}
+
+function hideQRCode() {
+    if (qrCode.classList.contains('show')) {
+        qrCode.classList.remove('show');
+    }
+
+    // Clear the div before adding the new QR code
+    while (qrCode.firstChild) {
+        qrCode.removeChild(qrCode.firstChild);
+    }
 }
 
 window.onload = (event) => {
