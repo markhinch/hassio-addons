@@ -2,19 +2,32 @@
 
 This addon runs a simple local webserver that serves a basic webpage which simply shows album artwork and basic information which it receives via MQTT (best served via Node Red, using the "node-red-contrib-sonos-events" and "node-red-contrib-sonos-plus" palettes).
 
+## Installation
+
+- Follow the instructions [here](https://www.home-assistant.io/common-tasks/os#installing-third-party-add-ons), using this repo's URL - https://github.com/markhinch/hassio-addons.git
+- Ensure you are running a local MQTT broker (Mosquitto recommended)
+- Ensure you have Node Red set up and running
+- Set the basic configuration variables in the Add-on and start it up
+- Set up a Node Red flow (example below) to connect to the frontend
+- Load up a web browser and checkensure that the frontend is being served (defaults to [http://homeassistant.local:777](http://homeassistant.local:777))
+
+## Notes
+
+The frontend is verrry basic at this point and is set up to work on a square screen which is rotated (due to some shenanigans with the Pimoroni Hyperpixel's rotation
+
 ## Example Node Red flow
 
 ```
 [{"id":"7246a9c4f7fa383a","type":"sonosevents-selection","z":"57de5c55f069456b","name":"","confignode":"91ee3d72e31aa9b0","playerHostname":"X.X.X.X","events":[{"fullName":"AVTransportService.content"}],"outputs":1,"x":210,"y":100,"wires":[["cbe5518934cbbfd5"]]},{"id":"36c54c1d6edbaace","type":"mqtt out","z":"57de5c55f069456b","name":"Update What's Playing","topic":"whatsplaying/update","qos":"","retain":"","respTopic":"","contentType":"","userProps":"","correl":"","expiry":"","broker":"0c9aa73e147e8e2f","x":1060,"y":160,"wires":[]},{"id":"1d26b8693b5e96c3","type":"switch","z":"57de5c55f069456b","name":"","property":"payload.playbackstate","propertyType":"msg","rules":[{"t":"eq","v":"playing","vt":"str"},{"t":"null"}],"checkall":"true","repair":false,"outputs":2,"x":810,"y":160,"wires":[["36c54c1d6edbaace"],["36c54c1d6edbaace"]]},{"id":"43f7fb7a183c4e4f","type":"sonos-universal","z":"57de5c55f069456b","confignode":"a92b267f4f686c4f","command":"group.get.trackplus","state":"","stateType":"str","avoidCheckPlayerAvailability":false,"name":"","x":210,"y":220,"wires":[["cbe5518934cbbfd5"]]},{"id":"651bf52fbf731ebc","type":"mqtt in","z":"57de5c55f069456b","name":"What's Playing frontend request","topic":"whatsplaying/retrieve","qos":"2","datatype":"auto-detect","broker":"0c9aa73e147e8e2f","nl":false,"rap":true,"rh":0,"inputs":0,"x":170,"y":160,"wires":[["43f7fb7a183c4e4f"]]},{"id":"cbe5518934cbbfd5","type":"function","z":"57de5c55f069456b","name":"Generate search term","func":"let searchTerm = '';\n\nsearchTerm += '\"' + msg.payload.artist + '\" ';\nsearchTerm += '\"' + msg.payload.title + '\" ';\n\nsearchTerm = encodeURIComponent(searchTerm);\n\nmsg.payload.searchTerm = \"https://www.google.com/search?q=\" + searchTerm;\n\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":540,"y":160,"wires":[["1d26b8693b5e96c3"]]},{"id":"91ee3d72e31aa9b0","type":"sonosevents-config","name":"","listenerHostname":"homeassistant.local","listenerPort":"","portType":"num"},{"id":"0c9aa73e147e8e2f","type":"mqtt-broker","name":"MQTT HomeAssistant","broker":"homeassistant.local","port":"1883","clientid":"","autoConnect":true,"usetls":false,"protocolVersion":"4","keepalive":"60","cleansession":true,"birthTopic":"","birthQos":"0","birthPayload":"","birthMsg":{},"closeTopic":"","closeQos":"0","closePayload":"","closeMsg":{},"willTopic":"","willQos":"0","willPayload":"","willMsg":{},"userProps":"","sessionExpiry":""},{"id":"a92b267f4f686c4f","type":"sonos-config","name":"Lounge","serialnum":"","ipaddress":"X.X.X.X"}]
 ```
 
-## Notes for getting up and running
+## Notes for getting up and running in alternative ways
 
 For running the backend in Raspbian (ie: not as a Home Assistant Add-on), use this command to spin up the container:
 
 `docker build --build-arg BUILD_FROM="python:3" -t whatsplaying_web .`
 
-For running / testing the backend locally, run with:
+For running / testing the backend locally on your development machine, run with:
 
 `python -m http.server`
 
