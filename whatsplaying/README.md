@@ -17,7 +17,7 @@ This repo includes an STL for 3d printing a case. This is designed to work with 
 
 ## Notes
 
-The frontend is verrry basic at this point and is set up to work on a square screen which is rotated (due to some shenanigans with the Pimoroni Hyperpixel's rotation
+The frontend is verrry basic at this point and is set up to work on a square screen which is rotated (due to some shenanigans with the Pimoroni Hyperpixel's rotation)
 
 ## Example Node Red flow
 
