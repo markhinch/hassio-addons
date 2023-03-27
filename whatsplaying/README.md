@@ -4,6 +4,8 @@ This addon runs a simple local webserver that serves a basic webpage which simpl
 
 ![What's Playing render](https://images.squarespace-cdn.com/content/636e179a0d1d302f2775a005/3c124a5f-0efb-46a9-96c0-b2a209aa67f7/Scene_230321_3.png?content-type=image%2Fpng)
 
+This repo includes an STL for 3d printing a case. This is designed to work with a Raspberry Pi Zero 2 W and a [Pimoroni Hyperpixel (NON-touch version)](https://shop.pimoroni.com/products/hyperpixel-4-square?variant=30138251477075).
+
 ## Installation
 
 - Follow the instructions [here](https://www.home-assistant.io/common-tasks/os#installing-third-party-add-ons), using this repo's URL - https://github.com/markhinch/hassio-addons.git
