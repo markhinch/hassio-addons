@@ -1,4 +1,4 @@
-# What's Playing Home Assistant Addon
+# "What's Playing" Home Assistant Addon
 
 This addon runs a simple local webserver that serves a basic webpage which simply shows album artwork and basic information which it receives via MQTT (best served via Node Red, using the "node-red-contrib-sonos-events" and "node-red-contrib-sonos-plus" palettes).
 
