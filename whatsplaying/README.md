@@ -4,6 +4,8 @@ This addon runs a simple local webserver that serves a basic webpage which simpl
 
 ![What's Playing render](https://images.squarespace-cdn.com/content/636e179a0d1d302f2775a005/3c124a5f-0efb-46a9-96c0-b2a209aa67f7/Scene_230321_3.png?content-type=image%2Fpng)
 
+![Node Red flow](https://images.squarespace-cdn.com/content/636e179a0d1d302f2775a005/9e4fb4f7-03c8-4e88-99d3-c559c5cd259b/Screenshot+2023-03-27+135502.png?content-type=image%2Fpng)
+
 This repo includes an STL for 3d printing a case. This is designed to work with a [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) and a [Pimoroni Hyperpixel (NON-touch version)](https://shop.pimoroni.com/products/hyperpixel-4-square?variant=30138251477075).
 
 ## Installation
