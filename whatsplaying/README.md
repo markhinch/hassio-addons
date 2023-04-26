@@ -67,6 +67,8 @@ unclutter -idle 0.5 -root &
 sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/$USER/.config/chromium/Default/Preferences
 sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/$USER/.config/chromium/Default/Preferences
 
+sleep 30
+
 /usr/bin/chromium-browser --noerrdialogs --kiosk http://homeassistant.local:777 &
 ```
 
